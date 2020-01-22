@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="relevamiento">
+            <h2><span>Relevamiento</span> {{relevamiento.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Fecha</span></dt>
+                <dd>
+                    <span>{{relevamiento.fecha}}</span>
+                </dd>
+                <dt><span>Escuela</span></dt>
+                <dd>
+                    <span>{{relevamiento.escuela}}</span>
+                </dd>
+                <dt><span>Puesto Salud</span></dt>
+                <dd>
+                    <span>{{relevamiento.puestoSalud}}</span>
+                </dd>
+                <dt><span>Estado</span></dt>
+                <dd>
+                    <span>{{relevamiento.estado}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/relevamiento', relevamiento.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

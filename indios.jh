@@ -1,0 +1,72 @@
+
+entity VinculoFamiliar {
+	nombre String,
+    estado Boolean
+}
+
+entity TipoPlanAsistencia {
+	nombre String,
+    estado Boolean
+}
+entity Nacionalidad {
+	nombre String,
+	estado Boolean
+}
+
+entity NivelEducativo {
+	nombre String required,
+    estado Boolean
+}
+entity TipoOcupacion {
+	nombre String required,
+    estado Boolean
+}
+entity Integrante {
+	dni Integer required,
+    apelllido String required,
+	nombre String required,
+    fechaNacimiento LocalDate,
+    edad Integer min(0) max(140),
+    sexo Sexo,
+    estado Boolean
+}
+enum Sexo {
+ Hombre, Mujer, Otro
+}
+entity Comunidad {
+	nombre String required,
+	estado Boolean
+}
+entity OrigenEnergia {
+	nombre String required,
+	estado Boolean
+}
+entity OrigenAgua {
+	nombre String required,
+	estado Boolean
+}
+entity TipoVivienda {
+	nombre String required,
+	estado Boolean
+}
+entity TipoServicio {
+	nombre String required,
+	estado Boolean
+}
+entity TipoTratamientoBasura {
+	nombre String required,
+	estado Boolean
+}
+entity Relevamiento {
+	fecha LocalDate,
+    escuela Boolean
+    puestoSalud Boolean
+	estado Boolean
+}
+//relaciones
+relationship OneToMany {
+	Relevamiento{integrante} to Integrante{integra(dni)},
+    Relevamiento{origenenergia} to OrigenEnergia,
+    Relevamiento{origenagua} to OrigenAgua,
+    Relevamiento{tiposervicio} to TipoServicio,
+}

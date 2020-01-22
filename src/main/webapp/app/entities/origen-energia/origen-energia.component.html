@@ -1,0 +1,63 @@
+<div>
+    <h2 id="page-heading">
+        <span>Origen Energias</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-origen-energia" [routerLink]="['/origen-energia/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Origen Energia
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="origenEnergias?.length === 0">
+        <span>No origenEnergias found</span>
+    </div>
+    <div class="table-responsive" *ngIf="origenEnergias?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Nombre</span></th>
+            <th scope="col" ><span>Estado</span></th>
+            <th scope="col" ><span>Relevamiento</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let origenEnergia of origenEnergias ;trackBy: trackId">
+                <td><a [routerLink]="['/origen-energia', origenEnergia.id, 'view' ]">{{origenEnergia.id}}</a></td>
+                <td>{{origenEnergia.nombre}}</td>
+                <td>{{origenEnergia.estado}}</td>
+                <td>
+                    <div *ngIf="origenEnergia.relevamiento">
+                        <a [routerLink]="['/relevamiento', origenEnergia.relevamiento?.id, 'view' ]" >{{origenEnergia.relevamiento?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/origen-energia', origenEnergia.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/origen-energia', origenEnergia.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(origenEnergia)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

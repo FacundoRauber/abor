@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="integrante">
+            <h2><span>Integrante</span> {{integrante.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Dni</span></dt>
+                <dd>
+                    <span>{{integrante.dni}}</span>
+                </dd>
+                <dt><span>Apelllido</span></dt>
+                <dd>
+                    <span>{{integrante.apelllido}}</span>
+                </dd>
+                <dt><span>Nombre</span></dt>
+                <dd>
+                    <span>{{integrante.nombre}}</span>
+                </dd>
+                <dt><span>Fecha Nacimiento</span></dt>
+                <dd>
+                    <span>{{integrante.fechaNacimiento}}</span>
+                </dd>
+                <dt><span>Edad</span></dt>
+                <dd>
+                    <span>{{integrante.edad}}</span>
+                </dd>
+                <dt><span>Sexo</span></dt>
+                <dd>
+                    <span>{{integrante.sexo}}</span>
+                </dd>
+                <dt><span>Estado</span></dt>
+                <dd>
+                    <span>{{integrante.estado}}</span>
+                </dd>
+                <dt><span>Integra</span></dt>
+                <dd>
+                    <div *ngIf="integrante.integra">
+                        <a [routerLink]="['/relevamiento', integrante.integra?.id, 'view']">{{integrante.integra?.dni}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/integrante', integrante.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

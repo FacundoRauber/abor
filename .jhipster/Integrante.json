@@ -1,0 +1,68 @@
+{
+    "name": "Integrante",
+    "fields": [
+        {
+            "fieldName": "dni",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "apelllido",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nombre",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fechaNacimiento",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "edad",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": 0,
+            "fieldValidateRulesMax": 140
+        },
+        {
+            "fieldName": "sexo",
+            "fieldType": "Sexo",
+            "fieldValues": "Hombre,Mujer,Otro"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "relevamiento",
+            "otherEntityRelationshipName": "integrante",
+            "relationshipName": "integra",
+            "otherEntityField": "dni"
+        }
+    ],
+    "changelogDate": "20200122104257",
+    "entityTableName": "integrante",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

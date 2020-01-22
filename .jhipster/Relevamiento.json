@@ -1,0 +1,57 @@
+{
+    "name": "Relevamiento",
+    "fields": [
+        {
+            "fieldName": "fecha",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "escuela",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "puestoSalud",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "integrante",
+            "otherEntityRelationshipName": "integra",
+            "relationshipName": "integrante"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "origenEnergia",
+            "otherEntityRelationshipName": "relevamiento",
+            "relationshipName": "origenenergia"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "origenAgua",
+            "otherEntityRelationshipName": "relevamiento",
+            "relationshipName": "origenagua"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "tipoServicio",
+            "otherEntityRelationshipName": "relevamiento",
+            "relationshipName": "tiposervicio"
+        }
+    ],
+    "changelogDate": "20200122104304",
+    "entityTableName": "relevamiento",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

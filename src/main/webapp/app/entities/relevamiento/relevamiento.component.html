@@ -1,0 +1,61 @@
+<div>
+    <h2 id="page-heading">
+        <span>Relevamientos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-relevamiento" [routerLink]="['/relevamiento/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create a new Relevamiento
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="relevamientos?.length === 0">
+        <span>No relevamientos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="relevamientos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Fecha</span></th>
+            <th scope="col" ><span>Escuela</span></th>
+            <th scope="col" ><span>Puesto Salud</span></th>
+            <th scope="col" ><span>Estado</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let relevamiento of relevamientos ;trackBy: trackId">
+                <td><a [routerLink]="['/relevamiento', relevamiento.id, 'view' ]">{{relevamiento.id}}</a></td>
+                <td>{{relevamiento.fecha | date:'mediumDate'}}</td>
+                <td>{{relevamiento.escuela}}</td>
+                <td>{{relevamiento.puestoSalud}}</td>
+                <td>{{relevamiento.estado}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/relevamiento', relevamiento.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/relevamiento', relevamiento.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(relevamiento)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
